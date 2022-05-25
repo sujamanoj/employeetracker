@@ -23,11 +23,19 @@ const db = mysql.createConnection(
   console.log("connected to the employee database")
 );
 
-// app.get("/", (req, res) => {
-//   res.json({
-//     message: "HELLO WORLD",
-//   });
-// });
+app.get("/api/employee", (req, res) => {
+  const sql = `SELECT * FROM employeetracker.employee`;
+  db.query(sql, (err, rows) => {
+    if (err) {
+      res.status(500).json({ error: err.message });
+      return;
+    }
+    res.json({
+      message: "success",
+      data: rows,
+    });
+  });
+});
 
 // Default response for any other request (Not Found)
 app.use((req, res) => {
@@ -36,7 +44,4 @@ app.use((req, res) => {
 
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
-});
-db.query(`SELECT * FROM employeetracker.employee WHERE id = 1`, (err, rows) => {
-  console.log(rows);
 });
