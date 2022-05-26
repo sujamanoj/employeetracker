@@ -1,4 +1,4 @@
-const inputCheck = require("./utils/inputCheck");
+// const inputCheck = require("./utils/inputCheck");
 const mysql = require("mysql2");
 
 const express = require("express");
@@ -15,11 +15,12 @@ app.use(express.json());
 //connect to database
 const db = mysql.createConnection(
   {
-    host: "localhost",
+    host: "127.0.0.1",
     //mysql username,
     user: "root",
     //mysql password
     password: "Suja1234",
+    database: "employeetracker",
   },
   console.log("connected to the employeetracker database")
 );
@@ -40,6 +41,23 @@ app.get("/api/employee", (req, res) => {
     res.json({
       message: "success",
       data: rows,
+    });
+  });
+});
+
+// Get a single candidate
+app.get("/api/employee/:id", (req, res) => {
+  const sql = `SELECT * FROM employee WHERE id = ?`;
+  const params = [req.params.id];
+
+  db.query(sql, params, (err, row) => {
+    if (err) {
+      res.status(400).json({ error: err.message });
+      return;
+    }
+    res.json({
+      message: "success",
+      data: row,
     });
   });
 });
@@ -83,24 +101,24 @@ app.post("/api/employee", ({ body }, res) => {
 
 const sql = `INSERT INTO employee (firstName, lastName, department, roleId, managerId)
   VALUES (?,?,?)`;
-const params = [
-  body.firstName,
-  body.lastName,
-  body.department,
-  body.roleId,
-  body.managerId,
-];
+// const params = [
+//   body.firstName,
+//   body.lastName,
+//   body.department,
+//   body.roleId,
+//   body.managerId,
+// ];
 
-db.query(sql, params, (err, result) => {
-  if (err) {
-    res.status(400).json({ error: err.message });
-    return;
-  }
-  res.json({
-    message: "success",
-    data: body,
-  });
-});
+// db.query(sql, params, (err, result) => {
+//   if (err) {
+//     res.status(400).json({ error: err.message });
+//     return;
+//   }
+//   res.json({
+//     message: "success",
+//     data: body,
+//   });
+// });
 // Default response for any other request (Not Found)
 app.use((req, res) => {
   res.status(404).end();
