@@ -4,19 +4,33 @@ INSERT INTO companies(name, description)
      ('Mass tv','Multimedia production and steaming platform');
 
 
-INSERT INTO employee (firstName, lastName, department, roleId, managerId, companiesId)
-VALUE ('vince','switzer','plant manager', 1, 1, 1),
-('Gorge','cedano','process manager', 1, 1, 1),
-('mohammad','hussian','quality manager', 1, 1, 1),
-('nader','maddi','lead mechcanic', 2, 2, 1),
-('ricardo','bernal','supervisor', 3, 3, 1),
-('petra','sermento','QA Lead', 2, 4, 1),
-('stephen', 'stein', 'plant manager',1, 1, 2),
-('alex','medena', 'process manager',1,5, 2),
-('trishul','manoj','cfo',1, 1, 2),
-('lynn','maggie','accounting',1,1, 2),
-('suja','manoj','content manager',1,1, 3),
-('vara','manoj','content supervisor', 3,6, 3),
-('sana', 'manoj','marketing manager',1,6, 3),
-('krishna', 'mahesh', 'content lead',2,6, 3 );
+INSERT INTO employee (firstName, lastName,  roleId, managerId, companiesId)
+VALUE ('vince','switzer', 1, 1, 1),
+('Gorge','cedano', 2, 1, 1),
+('mohammad','hussian', 3, 1, 1),
+('nader','maddi', 4, 2, 1),
+('ricardo','bernal',4 , 3, 1),
+('petra','sermento', 5, 4, 1),
+('stephen', 'stein', 6, 1, 2),
+('alex','medena', 6,5, 2),
+('trishul','manoj',6, 1, 2),
+('lynn','maggie',7,1, 2),
+('suja','manoj',8,1, 3),
+('vara','manoj', 9,6, 3),
+('sana', 'manoj',8,6, 3),
+('krishna', 'mahesh', 10,6,3 );
 
+
+
+INSERT INTO roles(name, salary)
+     VALUE ('plant manager',30000),
+     ('product manager ',12000 ),
+     ('QC manager',15000),
+     ('supervisor',15000),
+     ('QC LEAD',15000),
+     (' manager',15000),
+     ('ACCOUNTANT',15000),
+     ('content manager',15000),
+     ('content supervisor',15000),
+     ('content lead',15000);
+    
