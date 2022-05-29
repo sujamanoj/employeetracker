@@ -4,7 +4,7 @@ INSERT INTO companies(name, description)
      ('Mass tv','Multimedia production and steaming platform');
 
 
-INSERT INTO employee (firstName, lastName,  roleId, managerId, companiesId)
+INSERT INTO employee (firstName, lastName, roleId, managerId, companiesId)
 VALUE ('vince','switzer', 1, 1, 1),
 ('Gorge','cedano', 2, 1, 1),
 ('mohammad','hussian', 3, 1, 1),
@@ -22,15 +22,15 @@ VALUE ('vince','switzer', 1, 1, 1),
 
 
 
-INSERT INTO roles(name, salary)
-     VALUE ('plant manager',30000),
-     ('product manager ',12000 ),
-     ('QC manager',15000),
-     ('supervisor',15000),
-     ('QC LEAD',15000),
-     (' manager',15000),
-     ('ACCOUNTANT',15000),
-     ('content manager',15000),
-     ('content supervisor',15000),
-     ('content lead',15000);
+INSERT INTO roles(name, salary, companiesId)
+     VALUE ('plant manager',30000, 1),
+     ('product manager ',12000, 1 ),
+     ('QC manager',15000, 1),
+     ('supervisor',15000, 1),
+     ('QC LEAD',15000, 1),
+     ('CK manager',15000, 2),
+     ('ACCOUNTANT',15000, 2),
+     ('content manager',15000,3),
+     ('content supervisor',15000, 3),
+     ('content lead',15000, 3);
     

@@ -6,6 +6,10 @@ const res = require("express/lib/response");
 const { query } = require("express");
 const req = require("express/lib/request");
 
+const inquirer = require("inquirer");
+const consoleTable = require("console.table");
+const promisemysql = require("promise-mysql");
+
 //adding port designation.
 
 const PORT = process.env.PORT || 3006;
@@ -88,6 +92,36 @@ app.get("/api/companies/:id", (req, res) => {
       return;
     }
     res.json({ message: "success", data: row });
+  });
+});
+
+app.get("/api/roles", (req, res) => {
+  const sql = `SELECT * FROM roles`;
+  db.query(sql, (err, rows) => {
+    if (err) {
+      res.status(500).json({ error: err.message });
+      return;
+    }
+    res.json({
+      message: "success",
+      data: rows,
+    });
+  });
+});
+
+app.get("/api/roles/:id", (req, res) => {
+  const sql = `SELECT * FROM roles WHERE id = ?`;
+  const params = [req.params.id];
+
+  db.query(sql, params, (err, row) => {
+    if (err) {
+      res.status(400).json({ error: err.message });
+      return;
+    }
+    res.json({
+      message: "success",
+      data: row,
+    });
   });
 });
 
@@ -194,7 +228,7 @@ const sql = `INSERT INTO employee (firstName, lastName, department, roleId, mana
 //     res.status(400).json({ error: err.message });
 //     return;
 //   }
-//   res.json({
+//   res.json({S
 //     message: "success",
 //     data: body,
 //   });
