@@ -7,8 +7,6 @@ const { query } = require("express");
 const req = require("express/lib/request");
 
 const inquirer = require("inquirer");
-const consoleTable = require("console.table");
-const promisemysql = require("promise-mysql");
 
 //adding port designation.
 
